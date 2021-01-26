@@ -1,7 +1,7 @@
 {
 	"expo": {
-		"name": "nav_1",
-		"slug": "nav_1",
+		"name": "laborland",
+		"slug": "laborland",
 		"version": "1.0.0",
 		"orientation": "portrait",
 		"icon": "./assets/icon.png",

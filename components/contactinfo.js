@@ -20,11 +20,9 @@ const reviewSchema = yup.object({
 	skill_1: yup.string().required().min(8),
 	skill_2: yup.string().required().min(8),
 	skill_3: yup.string().required().min(8),
-	bank: yup.string().required().min(4),
-	accountinfo: yup.string().required().min(8),
 });
 
-export function NewValetForm() {
+export function ContactInfo() {
 	return (
 		<ScrollView>
 			<View style={formStyles.container}>
@@ -34,11 +32,9 @@ export function NewValetForm() {
 						address: "",
 						phone: "",
 						email: "",
-						skill_1: "",
-						skill_2: "",
-						skill_3: "",
-						bank: "",
-						accountinfo: "",
+						number_people: "",
+						man_hours: "",
+						comments: "",
 					}}
 					validationSchema={reviewSchema}
 					onSubmit={(values) => {
@@ -47,6 +43,9 @@ export function NewValetForm() {
 				>
 					{(props) => (
 						<View>
+							<Text style={formStyles.titleText}>
+								Contact Information
+							</Text>
 							<TextInput
 								style={formStyles.input}
 								placeholder="Name"
@@ -101,11 +100,11 @@ export function NewValetForm() {
 							</Text>
 
 							<Text style={formStyles.titleText}>
-								Skills
+								How Many People Required?
 							</Text>
 							<TextInput
 								style={formStyles.input}
-								placeholder="Skill 1"
+								placeholder="Number of People"
 								onChangeText={props.handleChange(
 									"skill_1"
 								)}
@@ -116,9 +115,12 @@ export function NewValetForm() {
 								{props.touched.skill_1 &&
 									props.errors.skill_1}
 							</Text>
+							<Text style={formStyles.titleText}>
+								Approximately How Long?
+							</Text>
 							<TextInput
 								style={formStyles.input}
-								placeholder="Skill 2"
+								placeholder="How Many Hours"
 								onChangeText={props.handleChange(
 									"skill_2"
 								)}
@@ -129,9 +131,14 @@ export function NewValetForm() {
 								{props.touched.skill_2 &&
 									props.errors.skill_2}
 							</Text>
+							<Text style={formStyles.titleText}>
+								Additional Comments?
+							</Text>
 							<TextInput
+								multiline
+								minHeight={100}
 								style={formStyles.input}
-								placeholder="Skill 3"
+								placeholder="Comments"
 								onChangeText={props.handleChange(
 									"skill_3"
 								)}
@@ -142,42 +149,7 @@ export function NewValetForm() {
 								{props.touched.skill_3 &&
 									props.errors.skill_3}
 							</Text>
-							<Text style={formStyles.titleText}>
-								Availability
-							</Text>
-							<Text style={formStyles.errorText}>
-								"Calendar, Clock, Map Widget inserted
-								here"
-							</Text>
-							<Text style={formStyles.titleText}>
-								Account Information
-							</Text>
-							<TextInput
-								style={formStyles.input}
-								placeholder="Bank"
-								onChangeText={props.handleChange(
-									"bank"
-								)}
-								value={props.values.bank}
-								onBlur={props.handleBlur("bank")}
-							/>
-							<Text style={formStyles.errorText}>
-								{props.touched.bank &&
-									props.errors.bank}
-							</Text>
-							<TextInput
-								style={formStyles.input}
-								placeholder="Account Info"
-								onChangeText={props.handleChange(
-									"accountinfo"
-								)}
-								value={props.values.accountinfo}
-								onBlur={props.handleBlur("accountinfo")}
-							/>
-							<Text style={formStyles.errorText}>
-								{props.touched.accountinfo &&
-									props.errors.accountinfo}
-							</Text>
+
 							<Button
 								title="submit"
 								color="#D24524"
